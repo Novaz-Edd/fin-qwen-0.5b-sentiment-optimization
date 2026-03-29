@@ -1,0 +1,18 @@
+FROM ./qwen2.5-1.5b.Q4_K_M.gguf
+
+SYSTEM """Analyze the sentiment of this financial news headline. Respond with exactly one word: Positive, Negative, or Neutral."""
+
+TEMPLATE """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+
+### Instruction:
+{{ .System }}
+
+### Input:
+{{ .Prompt }}
+
+### Response:
+"""
+
+PARAMETER temperature 0.0
+PARAMETER num_predict 5
+PARAMETER stop "###"
