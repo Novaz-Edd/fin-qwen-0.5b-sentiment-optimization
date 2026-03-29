@@ -1,0 +1,36 @@
+# Large Model Files
+*.gguf
+*.bin
+*.safetensors
+*.model
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data
+data/
+*.csv
+*.json
+
+# Ollama
+.ollama/
+ollama_cache/
+
+# Streamlit
+.streamlit/
+.streamlit_cache/
