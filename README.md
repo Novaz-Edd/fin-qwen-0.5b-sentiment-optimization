@@ -522,13 +522,6 @@ For questions regarding this project, please contact:
 
 ---
 
-## 📋 Project Credits
-
-**Lead Developer:** Edward (Novaz Edd)  
-**Institution:** Mae Fah Luang University (MFU), Chiang Rai, Thailand  
-**Student ID:** 6731503045  
-**Academic Year:** 2024-2025  
-
 Special thanks to:
 - Unsloth team for QLoRA optimization
 - Ollama community for local inference infrastructure
