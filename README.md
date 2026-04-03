@@ -458,22 +458,7 @@ Micro-Fin-Sentiment-LLM/
 - **evaluate.py:** Batch evaluation against test dataset with accuracy/latency metrics
 - **Modelfile.txt:** Ollama model definition with inference parameters
 - **qwen2.5-1.5b.Q4_K_M.gguf:** Quantized model weights (downloaded from HuggingFace)
-
----
-
-## University Information
-
-**Developer:** Edward (Novaz Edd)  
-**Degree:** Bachelor of Science (2nd Year)  
-**University:** Mae Fah Luang University (MFU)  
-📍 Chiang Rai, Thailand  
-
-**Student ID:** 6731503045  
-**Academic Year:** 2024-2025  
-
-**Project Supervisor:** [To be filled]  
-**Department:** Computer Science / AI & Machine Learning
-
+- 
 ---
 
 ## Future Improvements
@@ -521,13 +506,6 @@ For questions regarding this project, please contact:
 - **Research Paper:** [Coming Soon - Add your thesis/publication here]
 
 ---
-
-## 📋 Project Credits
-
-**Lead Developer:** Edward (Novaz Edd)  
-**Institution:** Mae Fah Luang University (MFU), Chiang Rai, Thailand  
-**Student ID:** 6731503045  
-**Academic Year:** 2024-2025  
 
 Special thanks to:
 - Unsloth team for QLoRA optimization
