@@ -140,8 +140,7 @@ To prove that a lightweight, fine-tuned SLM can outperform a larger generalist m
 
 ### HuggingFace Repository
 
-**Model Name:** `fin-qwen-1.5b-sentiment`  
-**Creator:** aungkyawsoe229  
+**Model Name:** `fin-qwen-1.5b-sentiment`   
 **Access:** https://huggingface.co/aungkyawsoe229/fin-qwen-1.5b-sentiment
 
 ### Model Specifications
@@ -482,18 +481,10 @@ Micro-Fin-Sentiment-LLM/
 
 ---
 
-## License
-
-This project is provided for educational purposes at Mae Fah Luang University. 
-
-**Disclaimer:** This project is intended for academic research only. Commercial use requires explicit permission.
-
----
 
 ## Questions or Feedback?
 
 For questions regarding this project, please contact:
-- **Email:** [your.email@mfu.ac.th]
 - **GitHub Issues:** [Create an issue on this repository](https://github.com/yourusername/Micro-Fin-Sentiment-LLM/issues)
 - **HuggingFace:** [Model Page](https://huggingface.co/aungkyawsoe229/fin-qwen-1.5b-sentiment)
 
@@ -503,7 +494,6 @@ For questions regarding this project, please contact:
 
 - **Interactive Demo:** [Live Streamlit App](https://824d-27-145-85-170.ngrok-free.app/) — Try it now!
 - **Model Card:** [HuggingFace Model Hub](https://huggingface.co/aungkyawsoe229/fin-qwen-1.5b-sentiment)
-- **Research Paper:** [Coming Soon - Add your thesis/publication here]
 
 ---
 
