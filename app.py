@@ -22,17 +22,19 @@ def call_ollama(model_name, prompt, is_finetuned=False):
             "model": model_name,
             "prompt": prompt,
             "stream": False,
-            "options": {"temperature": 0.3}
+            "options": {"temperature": 0.7}
         }
 
     try:
         response = requests.post(url, json=payload).json()
-        output = response.get("response", "").strip()
+        raw_output = response.get("response", "")
+        cleaned_output = raw_output.strip()
     except Exception as e:
-        output = f"Error: {str(e)}"
+        raw_output = f"Error: {str(e)}"
+        cleaned_output = raw_output
         
     end_time = time.time()
-    return output, round(end_time - start_time, 2)
+    return cleaned_output, round(end_time - start_time, 2), raw_output
 
 # --- Streamlit UI ---
 st.set_page_config(layout="wide")
@@ -45,17 +47,31 @@ if st.button("Run Side-by-Side Analysis 🏁"):
     
     col1, col2 = st.columns(2)
     
+    # Define separate prompts for each model
+    specialist_prompt = f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+
+### Instruction:
+Analyze the sentiment of this financial news headline. Respond with exactly one word: Positive, Negative, or Neutral.
+
+### Input:
+{headline}
+
+### Response:
+"""
+    
+    generalist_prompt = f"""What is the financial sentiment of this headline? Please analyze it and provide your thoughts: "{headline}"""
+    
     # COLUMN 1: YOUR FINE-TUNED MODEL
     with col1:
         st.subheader("🟢 The Specialist")
         st.caption("Model: fin-qwen-1.5b (Fine-Tuned)")
         with st.spinner("Analyzing strictly..."):
-            exact_prompt = f"Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.\n\n### Instruction:\nAnalyze the sentiment of this financial news headline. Respond with exactly one word: Positive, Negative, or Neutral.\n\n### Input:\n{headline}\n\n### Response:\n"
-            
-            dav_answer, dav_time = call_ollama("fin-qwen-1.5b", exact_prompt, is_finetuned=True)
+            dav_answer, dav_time, dav_raw = call_ollama("fin-qwen-1.5b", specialist_prompt, is_finetuned=True)
             
             st.success(f"**Sentiment:** {dav_answer}")
             st.info(f"**Speed:** {dav_time} seconds")
+            with st.expander("🔍 View Raw API Output"):
+                st.code(repr(dav_raw), language="python")
             st.write("✅ **Formatting:** Perfect single word.")
             st.write("✅ **Behavior:** Laser-focused on the task.")
 
@@ -64,11 +80,11 @@ if st.button("Run Side-by-Side Analysis 🏁"):
         st.subheader("🔴 The Generalist")
         st.caption("Model: qwen2.5:1.5b (Base Foundation)")
         with st.spinner("Thinking..."):
-            chat_prompt = f"Analyze the sentiment of this financial news headline. Respond with exactly one word: Positive, Negative, or Neutral. Headline: {headline}"
-            
-            gol_answer, gol_time = call_ollama("qwen2.5:1.5b", chat_prompt, is_finetuned=False)
+            gol_answer, gol_time, gol_raw = call_ollama("qwen2.5:1.5b", generalist_prompt, is_finetuned=False)
             
             st.warning(f"**Sentiment Output:** {gol_answer}")
             st.error(f"**Speed:** {gol_time} seconds")
+            with st.expander("🔍 View Raw API Output"):
+                st.code(repr(gol_raw), language="python")
             st.write("❌ **Formatting:** Often rambles or ignores the one-word rule.")
             st.write("❌ **Behavior:** Acts like a chatbot, not a classifier.")
